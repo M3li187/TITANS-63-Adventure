@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/Astronaut.gd" id="1_player"]
+[ext_resource type="PackedScene" path="res://assets/astronaut/astronaut_moon_walk.glb" id="2_model"]
+
+[ext_resource type="Script" path="res://scripts/PlayerInteraction.gd" id="3_interaction"]
+
+[sub_resource type="CapsuleShape3D" id="Capsule"]
+radius = 0.28
+height = 1.8
+
+[node name="Astronaut" type="CharacterBody3D" groups=["player"]]
+collision_layer = 2
+collision_mask = 1
+floor_snap_length = 0.18
+safe_margin = 0.005
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.9, 0)
+shape = SubResource("Capsule")
+
+[node name="HeadPivot" type="Node3D" parent="."]
+position = Vector3(0, 1.65, 0)
+
+[node name="Camera3D" type="Camera3D" parent="HeadPivot"]
+current = true
+fov = 75.0
+near = 0.04
+far = 6000.0
+
+[node name="Interaction" type="Node" parent="."]
+script = ExtResource("3_interaction")
+
+[node name="astronaut_moon_walk" parent="." instance=ExtResource("2_model")]
+rotation = Vector3(0, 3.14159265, 0)
