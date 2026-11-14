@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://3vw2mobsexqw"]
+
+[ext_resource type="PackedScene" uid="uid://b58v3qj4174b4" path="res://astronaut_moon_walk.glb" id="1_xn7oe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tucum"]
+size = Vector3(30, 30, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dh8wh"]
+size = Vector3(30, 0.2, 30)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dh8wh"]
+height = 1.796875
+
+[node name="Node3D" type="Node3D" unique_id=2125031679]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1743490498]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2005901992]
+shape = SubResource("BoxShape3D_tucum")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=468651628]
+mesh = SubResource("BoxMesh_dh8wh")
+
+[node name="asronat" type="StaticBody3D" parent="." unique_id=1980426132]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="asronat" unique_id=1358341454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72265625, 0)
+shape = SubResource("CapsuleShape3D_dh8wh")
+
+[node name="Camera3D" type="Camera3D" parent="asronat" unique_id=901216580]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0.2)
+
+[node name="astronaut_moon_walk" parent="asronat" unique_id=812415751 instance=ExtResource("1_xn7oe")]
