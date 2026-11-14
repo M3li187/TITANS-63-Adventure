@@ -1,0 +1,49 @@
+TITANS-63 Adventure - fixed project
+
+OPEN AND RUN
+1. Extract the whole ZIP into a new folder.
+2. In Godot 4, import/open project.godot from the extracted folder.
+3. Allow the model assets to import, then press F6 for mars.tscn or F5.
+
+CONTROLS
+W: forward (-Z), S: backward (+Z), A: left (-X), D: right (+X).
+Directions are relative to the fixed follow camera/world axes.
+Mouse: look around. W/S move forward/backward relative to your view.
+A/D strafe left/right relative to your view.
+Escape: release the mouse. Left click: capture it again.
+Moon_Walk plays while moving and pauses when movement stops.
+Speed and moon_gravity can be adjusted on the asronat node.
+Camera Motion Strength controls the floating head movement; set it to 0
+for a steady view. Default 0.35 keeps movement gentle.
+Camera Smoothing controls how quickly the camera follows and settles.
+Mouse Sensitivity controls look speed.
+
+FIXES
+- Replaced the placeholder StaticBody3D script with a CharacterBody3D controller.
+- Changed the asronat node to CharacterBody3D and attached its script.
+- Connected the imported AnimationPlayer automatically; enabled Moon_Walk looping.
+- Kept W's existing front action and added S/back, A/left, D/right.
+- Matched the floor collision to its 30 x 0.2 x 30 visual mesh.
+- Positioned the floor top at zero and aligned the player capsule above it.
+- Moved the camera to a first-person eye pivot at 1.65m.
+- Added mouse look with a vertical angle limit and camera-relative WASD.
+- Added smoothed head-animation bob and subtle movement tilt.
+- Filtered slow animation drift and capped camera offsets.
+- Hid the local model from the first-person camera to avoid helmet clipping.
+- Turned the visual model to face W and added a directional light.
+- Set the main scene to its file path so a fresh import works without a UID cache.
+- Removed a mislabeled .tres that contained binary GLB data. Its byte-identical
+  correctly named GLB remains in the project, so no unique model data was lost.
+
+VALIDATION
+Tested using Godot 4.6.3 headless: scene loading, floor collision, all four
+movement directions, normalized diagonal speed, stationary idle, and animation
+play/pause. Also tested eye height, head-bone tracking, bounded bob, idle
+settling, turned movement, mouse look, and cursor release.
+Interactive graphics were not visually tested.
+
+Optional command-line check from this folder:
+godot --headless --fixed-fps 60 --path . --script res://tests/movement_smoke_test.gd
+
+Generated editor caches and the uploaded Git history are omitted from this ZIP.
+All model and texture source assets are included.
