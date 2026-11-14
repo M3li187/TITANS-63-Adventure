@@ -1,0 +1,37 @@
+TITANS-63 Adventure - fixed project
+
+OPEN AND RUN
+1. Extract the whole ZIP into a new folder.
+2. In Godot 4, import/open project.godot from the extracted folder.
+3. Allow the model assets to import, then press F6 for mars.tscn or F5.
+
+CONTROLS
+W: forward (-Z), S: backward (+Z), A: left (-X), D: right (+X).
+Directions are relative to the fixed follow camera/world axes.
+The astronaut keeps facing forward while moving backward or sideways.
+Moon_Walk plays while moving and pauses when movement stops.
+Speed and moon_gravity can be adjusted on the asronat node.
+
+FIXES
+- Replaced the placeholder StaticBody3D script with a CharacterBody3D controller.
+- Changed the asronat node to CharacterBody3D and attached its script.
+- Connected the imported AnimationPlayer automatically; enabled Moon_Walk looping.
+- Kept W's existing front action and added S/back, A/left, D/right.
+- Matched the floor collision to its 30 x 0.2 x 30 visual mesh.
+- Positioned the floor top at zero and aligned the player capsule above it.
+- Moved the camera out of the model to a third-person follow position.
+- Turned the visual model to face W and added a directional light.
+- Set the main scene to its file path so a fresh import works without a UID cache.
+- Removed a mislabeled .tres that contained binary GLB data. Its byte-identical
+  correctly named GLB remains in the project, so no unique model data was lost.
+
+VALIDATION
+Tested using Godot 4.6.3 headless: scene loading, floor collision, all four
+movement directions, normalized diagonal speed, stationary idle, and animation
+play/pause. Interactive graphics were not visually tested.
+
+Optional command-line check from this folder:
+godot --headless --path . --script res://tests/movement_smoke_test.gd
+
+Generated editor caches and the uploaded Git history are omitted from this ZIP.
+All model and texture source assets are included.
