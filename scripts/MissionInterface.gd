@@ -24,6 +24,7 @@ var _hover: Label
 var _cross: Label
 var _voice_button: Button
 var _sound_button: Button
+var _music_button: Button
 var _mission_alert: PanelContainer
 var _mission_alert_text: Label
 
@@ -132,7 +133,7 @@ func _build_header() -> void:
 	_altitude.offset_top = 120
 	_altitude.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	root.add_child(_altitude)
-	var footer := label("TAB  LUNA   ·   WASD  WALK   ·   SHIFT  RUN   ·   SPACE  JUMP   ·   E  USE   ·   T  REPLAY   ·   M  AUDIO   ·   V  VOICE", 12, DIM)
+	var footer := label("TAB  LUNA   ·   WASD  WALK   ·   SHIFT  RUN   ·   SPACE  JUMP   ·   E  USE   ·   T  REPLAY   ·   M  AUDIO   ·   V  VOICE   ·   N  MUSIC", 12, DIM)
 	footer.anchor_top = 1
 	footer.anchor_bottom = 1
 	footer.offset_left = 28
@@ -213,6 +214,8 @@ func _build_overlay() -> void:
 	controls.add_child(_voice_button)
 	_sound_button = button("Audio: on", func() -> void: mission.audio.toggle_sound())
 	controls.add_child(_sound_button)
+	_music_button = button("Music: on", func() -> void: get_node("/root/SpaceMusic").toggle_music())
+	controls.add_child(_music_button)
 
 func open_panel() -> void:
 	if mission.cinematic != null and mission.cinematic.active: return
@@ -305,6 +308,7 @@ func _process(_delta: float) -> void:
 	_altitude.text = "SIM ALT  %s  ·  %s" % [("%.0f m" % maxf(0, mission.lunar.altitude_m - 1.0)) if mission.reliable_height or mission.stage_index == 0 else "NO RELIABLE DATA", mission.phase_label()]
 	_voice_button.text = "Voice: on" if mission.audio.voice_enabled else "Voice: off"
 	_sound_button.text = "Audio: on" if mission.audio.sound_enabled else "Audio: muted"
+	_music_button.text = "Music: on" if get_node("/root/SpaceMusic").music_enabled else "Music: off"
 	_subtitle.text = mission.subtitle
 	_subtitle_panel.visible = not panel_visible() and (mission.audio.speaking() or mission.subtitle_time < 18.0)
 	_hover.visible = not panel_visible()

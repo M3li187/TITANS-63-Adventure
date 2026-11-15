@@ -439,3 +439,13 @@ This Debian package is copyright (c) 2002-2009 by Mario Lang and by
 Denis Briand, it's under GPL version 3 license.
 On Debian GNU/Linux systems, the complete text of the GNU General Public
 License can be found in `/usr/share/common-licenses/GPL-3'.
+
+
+Exploration audio update
+------------------------
+Fra Mauro Stillness: original 96-second ambient score, synthesized for TITANS.
+Warm sustained chords and sparse soft arpeggios; no downloaded music or samples.
+Bridge boot contacts and lunar suit-conducted boot/grit contacts: original
+procedural foley, three variants per surface. No third-party sound samples.
+Reproducible with tools/generate_exploration_audio.py; runtime uses the bundled
+WAV files and Ogg Vorbis music and requires no generator or online service.

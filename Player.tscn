@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/Astronaut.gd" id="1_player"]
 [ext_resource type="PackedScene" path="res://assets/astronaut/astronaut_moon_walk.glb" id="2_model"]
 
 [ext_resource type="Script" path="res://scripts/PlayerInteraction.gd" id="3_interaction"]
+
+[ext_resource type="Script" path="res://scripts/Footsteps.gd" id="4_footsteps"]
 
 [sub_resource type="CapsuleShape3D" id="Capsule"]
 radius = 0.28
@@ -31,6 +33,9 @@ far = 6000.0
 
 [node name="Interaction" type="Node" parent="."]
 script = ExtResource("3_interaction")
+
+[node name="Footsteps" type="Node" parent="."]
+script = ExtResource("4_footsteps")
 
 [node name="astronaut_moon_walk" parent="." instance=ExtResource("2_model")]
 rotation = Vector3(0, 3.14159265, 0)

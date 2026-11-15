@@ -19,6 +19,10 @@ config/description="Procedurally generated, fully explorable spacecraft cockpit 
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+SpaceMusic="*res://scripts/SpaceMusic.gd"
+
 [display]
 
 window/size/viewport_width=1600

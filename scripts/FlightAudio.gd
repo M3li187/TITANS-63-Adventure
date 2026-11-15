@@ -14,7 +14,6 @@ var voice_lines: Dictionary = {}
 var envelopes: Dictionary = {}
 var _streams: Dictionary = {}
 var _headless := false
-var _step_clock := 0.0
 var _alarm_clock := 0.0
 var warning_active := false
 var landing_active := false
@@ -113,15 +112,6 @@ func _process(delta: float) -> void:
 	var duck := -6.0 if speaking() else 0.0
 	air.volume_db = lerpf(air.volume_db, -22.0 + duck, minf(1.0, delta * 5.0))
 	engine.volume_db = lerpf(engine.volume_db, (-19.0 if landing_active else -31.0) + duck, minf(1.0, delta * 2.0))
-	var velocity := player.get_real_velocity()
-	var speed := Vector2(velocity.x, velocity.z).length()
-	if speed > 0.1 and player.is_on_floor():
-		_step_clock += delta * speed
-		if _step_clock > 0.95:
-			_step_clock = 0.0
-			play_sfx("step", -21.0)
-	else:
-		_step_clock = 0.5
 	if warning_active:
 		_alarm_clock += delta
 		if _alarm_clock > 4.0:

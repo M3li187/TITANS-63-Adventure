@@ -1,0 +1,11 @@
+{
+  "title": "Fra Mauro Stillness",
+  "duration_seconds": 96,
+  "sample_rate": 32000,
+  "channels": 2,
+  "composition": "Original slow ambient pads and sparse soft arpeggios; no percussion; eight-chord cycle.",
+  "master_peak": 0.65,
+  "master_rms": 0.13110573792011165,
+  "loop_boundary_delta": 0.004266669158225461,
+  "source": "Original deterministic synthesis; no third-party sound samples."
+}

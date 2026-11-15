@@ -1,8 +1,6 @@
 extends Node3D
 ## Moon base from the available Part 1 scene; uses the current sprint/jump player.
 var player: CharacterBody3D
-var _steps: AudioStreamPlayer
-var _step_clock := 0.0
 
 func _ready() -> void:
 	var environment: Environment = $WorldEnvironment.environment
@@ -31,10 +29,7 @@ func _ready() -> void:
 			convex.points = points
 			collider.shape = convex
 		collider.transform.basis = collider.transform.basis.orthonormalized()
-	_steps = AudioStreamPlayer.new()
-	_steps.stream = load("res://assets/audio/step.wav")
-	_steps.volume_db = -18
-	add_child(_steps)
+	player.get_node("Footsteps").surface_profile = "moon"
 	_build_hud()
 	call_deferred("_place_player")
 
@@ -65,6 +60,7 @@ func _place_player() -> void:
 	player.spawn_transform = player.global_transform
 	player.set_mouse_look(true)
 	player.set_physics_process(true)
+	_place_flag()
 
 func _build_hud() -> void:
 	var layer := CanvasLayer.new()
@@ -73,16 +69,37 @@ func _build_hud() -> void:
 	label.position = Vector2(28, 24)
 	label.add_theme_font_size_override("font_size", 22)
 	label.add_theme_color_override("font_color", Color("71e9e0"))
-	label.text = "SECRET AREA UNLOCKED / MOON BASE\nExplore the colony · WASD move · Shift run · Space jump · R return to arrival"
+	label.text = "SECRET AREA UNLOCKED / MOON BASE\nExplore the colony · WASD move · Shift run · Space jump · R return to arrival\nN music on/off · M mute all audio"
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(label)
 
-func _process(delta: float) -> void:
-	if player == null: return
-	var motion := player.get_real_velocity()
-	if player.is_on_floor() and Vector2(motion.x, motion.z).length() > 0.1:
-		_step_clock += delta * Vector2(motion.x, motion.z).length()
-		if _step_clock > .95 and DisplayServer.get_name() != "headless":
-			_step_clock = 0
-			_steps.play()
-	else: _step_clock = .5
+
+func _place_flag() -> void:
+	# Place beside the arrival path on clear measured collision ground, not a roof.
+	var flag: Node3D = $UniversityFlag
+	var space := get_world_3d().direct_space_state
+	var spawn: Vector3 = player.spawn_transform.origin
+	for offset in [Vector2(4, 6), Vector2(-4, 6), Vector2(4, 3), Vector2(6, 6)]:
+		var point: Vector2 = Vector2(spawn.x, spawn.z) + offset
+		var ray := PhysicsRayQueryParameters3D.create(Vector3(point.x, spawn.y + 4, point.y), Vector3(point.x, spawn.y - 5, point.y), 1)
+		ray.exclude = [player.get_rid(), flag.get_node("PoleCollision").get_rid()]
+		var hit := space.intersect_ray(ray)
+		if hit.is_empty() or hit.normal.y < .8 or absf(hit.position.y - spawn.y) > 1.0: continue
+		var clearance := PhysicsShapeQueryParameters3D.new()
+		var volume := BoxShape3D.new()
+		volume.size = Vector3(3.0, 4.0, .7)
+		clearance.shape = volume
+		clearance.transform = Transform3D(Basis(), hit.position + Vector3(1.1, 2.08, 0))
+		clearance.collision_mask = 1
+		clearance.exclude = [player.get_rid(), flag.get_node("PoleCollision").get_rid()]
+		if not space.intersect_shape(clearance, 1).is_empty(): continue
+		flag.global_position = hit.position + Vector3.UP * .015
+		flag.set_meta("grounded", true)
+		return
+	push_warning("Flag could not find clear ground beside the arrival; using the ground below its authored location.")
+	var fallback := PhysicsRayQueryParameters3D.create(flag.position + Vector3.UP * 50, flag.position + Vector3.DOWN * 50, 1)
+	fallback.exclude = [flag.get_node("PoleCollision").get_rid(), player.get_rid()]
+	var ground := space.intersect_ray(fallback)
+	if not ground.is_empty():
+		flag.global_position = ground.position + Vector3.UP * .015
+		flag.set_meta("grounded", true)

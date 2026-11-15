@@ -160,3 +160,158 @@ Accessible standing cells: 510
 Reachable controls: 76/76; unavailable: []
 
 Native OpenGL rendering checked: backup sensor objective, legible rear flight panel, good touchdown, safe climb, bad rock contact and secret reveal. All four ending sequences use actual 3D cameras and restore first-person input afterward. Secret Moon-base transfer passed.
+
+
+Footsteps, space music and university flag update / Godot 4.6.3
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[Bridge 6] built in 617 ms | interior 65052 tris, exterior 13044 tris, glass 28 tris | 73 controls, 11 screens
+PASS bundled ambient music loops
+PASS 96-second relaxing score
+PASS separate music and footsteps mix buses
+PASS bridge has three boot variants
+PASS bridge real waveform loaded
+PASS bridge real waveform loaded
+PASS bridge real waveform loaded
+PASS moon has three boot variants
+PASS moon real waveform loaded
+PASS moon real waveform loaded
+PASS moon real waveform loaded
+PASS idle has no footsteps
+PASS walking plays audible bridge boot samples
+PASS running increases footstep cadence
+PASS open comms suppresses footsteps
+PASS airborne footsteps are silent
+PASS pushing against a wall produces no steps
+PASS N pauses only background music
+PASS N resumes music
+PASS Moon base loads
+PASS one music player persists through scene transfer
+PASS Moon arrival selects lunar boot sounds
+PASS actual lunar walking triggers lunar samples
+PASS flag placed on clear lunar ground
+PASS flag is near the arrival path
+PASS front uses supplied university image
+PASS both sides use the exact same supplied image
+PASS front and back normals face outward
+PASS reverse side UVs keep lettering readable
+PASS flag supported by crossbar and solid pole
+PASS M mutes all audio in Moon base
+PASS M restores Moon-base audio
+AUDIO / UNIVERSITY FLAG: 0 failures
+
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[Bridge 6] built in 646 ms | interior 65052 tris, exterior 13044 tris, glass 28 tris | 73 controls, 11 screens
+PASS no automatic mission panel at startup
+PASS clock starts before first mission
+PASS real-time countdown runs during exploration
+PASS first mission arrives without popup
+PASS mission alert asks player to press Tab
+PASS Tab opens mission
+PASS options hide resource consequences
+PASS options hide resource consequences
+PASS options hide resource consequences
+PASS NASA data tab removed
+PASS clock also runs while mission panel is open
+PASS choice applies effects
+PASS post-choice effect values retained
+PASS resource changes shown after selecting
+PASS gap between missions; panel closes
+PASS next mission is not immediate
+PASS second mission arrives as alert
+PASS A-B-C fuel and power remain unchanged
+PASS time includes both real elapsed time and choice penalties
+PASS secret ending does not force a panel open
+PASS secret ending switches to supplied Moon-base scene
+PASS base player safely grounded
+PASS outdoor fall reset plane configured
+PASS sprint works in Moon base
+PASS mission result carried to base
+MISSION FLOW / BASE: 0 failures
+
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[Bridge 6] built in 563 ms | interior 65052 tris, exterior 13044 tris, glass 28 tris | 73 controls, 11 screens
+PASS Shift binding
+PASS Space binding
+PASS front + Shift runs at 3m/s
+PASS run animation front
+PASS release Shift resumes walking front
+PASS walking animation restored
+PASS back + Shift runs at 3m/s
+PASS run animation back
+PASS release Shift resumes walking back
+PASS walking animation restored
+PASS left + Shift runs at 3m/s
+PASS run animation left
+PASS release Shift resumes walking left
+PASS walking animation restored
+PASS right + Shift runs at 3m/s
+PASS run animation right
+PASS release Shift resumes walking right
+PASS walking animation restored
+PASS diagonal run normalized
+PASS jump starts grounded
+PASS Space launches jump
+PASS airborne after jump
+PASS no double jump while airborne
+PASS bounded moon-gravity jump arc
+PASS lands back on deck
+PASS holding Space does not bunny-hop
+PASS comms panel blocks running and jumping
+PASS running jump works
+RUN/JUMP RESULT: 0 failures
+
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[Bridge 6] built in 490 ms | interior 65052 tris, exterior 13044 tris, glass 28 tris | 73 controls, 11 screens
+PASS selecting a plan returns player to the bridge
+PASS selecting alone spends no resource cost
+PASS wrong switch does not complete task
+PASS physical communications uplink applies choice once
+PASS repeated control use does not repeat resource cost
+PASS recheck requires a waiting stage
+PASS persistent warning redirects player to Mission Control
+PASS replay follows the current recheck objective
+PASS delayed report preserves its authored outcome
+PASS radar OFF alone is insufficient
+PASS replay follows the radar power-cycle step
+PASS radar OFF then ON restores altitude
+PASS backup sensor is under the physical first-person interaction ray
+PASS E actually activates the backup height sensor
+PASS exactly 7 minutes meets secret threshold
+PASS less than 7 minutes receives good ending
+PASS bad cinematic takes the camera and locks movement
+PASS bad cinematic blocks recapture and menus
+PASS bad exterior tracking shot
+PASS noninteractive ending does not charge extra time
+PASS bad final shot
+PASS bad completes and restores first-person control
+PASS bad restores HUD
+PASS normal cinematic takes the camera and locks movement
+PASS normal cinematic blocks recapture and menus
+PASS normal exterior tracking shot
+PASS noninteractive ending does not charge extra time
+PASS normal final shot
+PASS normal completes and restores first-person control
+PASS normal restores HUD
+PASS safe cinematic takes the camera and locks movement
+PASS safe cinematic blocks recapture and menus
+PASS safe exterior tracking shot
+PASS noninteractive ending does not charge extra time
+PASS safe final shot
+PASS safe completes and restores first-person control
+PASS safe restores HUD
+PASS secret cinematic takes the camera and locks movement
+PASS secret cinematic blocks recapture and menus
+PASS secret exterior tracking shot
+PASS noninteractive ending does not charge extra time
+PASS secret final shot
+PASS secret completes and restores first-person control
+PASS secret restores HUD
+PRACTICAL TASKS AND FOUR CINEMATICS: 0 failures
+
+Native audio checks: active signal captured from Music, bridge boot and lunar boot buses. Narration ducking reached -23 dB from -14 dB music level. Music paused/resumed and the same music player continued through Moon-base arrival.
+Native visual checks: Moon-base flag is grounded near arrival; the unchanged supplied artwork reads normally on both faces; music toggle fits the LUNA interface.
+Actual audio playback teardown also checked with the Dummy audio device and a release interval: no resource or decoder errors.
