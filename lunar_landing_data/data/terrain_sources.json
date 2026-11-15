@@ -1,0 +1,50 @@
+{
+  "data_kind": "source_catalog_only_not_downloaded_rasters",
+  "source_id": "lroc_apollo14_dtm",
+  "product_group": "NAC_DTM_APOLLO14",
+  "sample_spacing_m": 2.0,
+  "coordinate_conventions": {
+    "latitude": "north positive",
+    "longitude": "east positive, 0 to 360 in this product catalog"
+  },
+  "raster_files_included": true,
+  "products": [
+    {
+      "role": "elevation",
+      "filename": "NAC_DTM_APOLLO14.TIF",
+      "source_id": "lroc_dtm_download",
+      "format": "32-bit GeoTIFF",
+      "catalog_size_mb": 118.54,
+      "usage": "Numerical elevations; inspect unit, datum and NoData definitions in the product label/readme."
+    },
+    {
+      "role": "imagery",
+      "filename": "NAC_DTM_APOLLO14_M150633128_2M.TIF",
+      "source_id": "lroc_ortho_download",
+      "format": "GeoTIFF orthophoto",
+      "catalog_size_mb": 29.65,
+      "usage": "Surface imagery to align with the DTM; already contains lighting/shadows."
+    },
+    {
+      "role": "slope_visualization",
+      "filename": "NAC_DTM_APOLLO14_SLOPE.TIF",
+      "source_id": "lroc_slope_download",
+      "format": "Color slope GeoTIFF",
+      "catalog_size_mb": 88.94,
+      "usage": "Visual interpretation with its legend. For numeric slope, derive it from the DTM."
+    }
+  ],
+  "game_scale": {
+    "meters_per_godot_unit": 1.0,
+    "suggested_crop_width_m": 1024,
+    "note": "Crop choice is a performance suggestion, not a NASA landing-zone boundary."
+  },
+  "limitations": [
+    "A 2 m grid does not reliably resolve individual small rocks. Place gameplay rocks separately and label them simulated.",
+    "Do not use color slope or shaded-relief imagery as a heightmap.",
+    "Do not assign an Earth coordinate reference system to lunar rasters."
+  ],
+  "bundled_crop_path": "res://assets/moon/",
+  "full_original_rasters_included": false,
+  "note": "The integrated game now includes a measured crop. Full originals are referenced by URL and SHA-256 in assets/moon/terrain_metadata.json."
+}

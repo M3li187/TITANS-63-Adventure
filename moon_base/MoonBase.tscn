@@ -1,0 +1,141 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_noarx"]
+[ext_resource type="Texture2D" path="res://moon_base/assets/sky.jpg" id="3_r3fl7"]
+[ext_resource type="PackedScene" path="res://moon_base/assets/Moonwalk_Colony.glb" id="4_i5arm"]
+[ext_resource type="PackedScene" path="res://moon_base/assets/Sun.glb" id="4_jka67"]
+[ext_resource type="PackedScene" path="res://moon_base/assets/ApolloLander.glb" id="4_r3fl7"]
+
+[ext_resource type="Script" path="res://moon_base/MoonBase.gd" id="9_base"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_btftw"]
+radius = 19.591
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0ya7"]
+size = Vector3(2.0217438, 1, 4.595581)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wt34f"]
+panorama = ExtResource("3_r3fl7")
+
+[sub_resource type="Sky" id="Sky_dtglo"]
+sky_material = SubResource("PanoramaSkyMaterial_wt34f")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_u0ya7"]
+background_mode = 2
+ambient_light_source = 3
+ambient_light_color = Color(0.36, 0.4, 0.5, 1)
+ambient_light_energy = 0.35
+glow_enabled = true
+sky = SubResource("Sky_dtglo")
+
+[node name="MoonBase" type="Node3D" unique_id=604451444]
+
+script = ExtResource("9_base")
+
+[node name="Astronaut" parent="." unique_id=949852172 instance=ExtResource("1_noarx")]
+transform = Transform3D(-0.8090076, 0.017868046, 0.58752644, 0.043600187, 0.9986085, 0.029666241, -0.5861788, 0.049616486, -0.80866086, 9.53, 5.6582036, -38.975792)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=348064408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.371798, 0)
+
+[node name="mai" type="CollisionShape3D" parent="StaticBody3D2" unique_id=383113684]
+transform = Transform3D(0.7410822, 0, 0, 0, 0.4796357, 0, 0, 0, 0.2942413, 10.2786, 29.838463, -48.18701)
+shape = SubResource("SphereShape3D_btftw")
+
+[node name="apolo luna11r" parent="StaticBody3D2" unique_id=1252147496 instance=ExtResource("4_r3fl7")]
+transform = Transform3D(3.4740565, 0, 0, 0, 2.7660599, 0, 0, 0, 4.9620943, 9.633282, 19.411804, -48.98886)
+
+[node name="s1" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1456543990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.199196, 20.56887, -37.753876)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s2" type="CollisionShape3D" parent="StaticBody3D2" unique_id=500942642]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 21.199594, -38.12105)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s3" type="CollisionShape3D" parent="StaticBody3D2" unique_id=625398725]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 21.463165, -38.434353)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s4" type="CollisionShape3D" parent="StaticBody3D2" unique_id=480219957]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 21.719984, -38.63905)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s5" type="CollisionShape3D" parent="StaticBody3D2" unique_id=403485461]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 22.000591, -38.899097)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s6" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1611204785]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 22.270319, -39.11547)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s7" type="CollisionShape3D" parent="StaticBody3D2" unique_id=16447992]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 22.533237, -39.356964)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s8" type="CollisionShape3D" parent="StaticBody3D2" unique_id=259617888]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 22.772484, -39.572865)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s9" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1264601873]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 23.02977, -39.787975)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s10" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1466196115]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 23.286694, -39.932484)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s11" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1303951193]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 23.560144, -40.24726)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s12" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2100002786]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 23.831459, -40.422234)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s13" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2025120223]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 23.838223, -40.45771)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s14" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1422965967]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 24.095146, -40.60222)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s15" type="CollisionShape3D" parent="StaticBody3D2" unique_id=534680718]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 24.368597, -40.916996)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s16" type="CollisionShape3D" parent="StaticBody3D2" unique_id=557525963]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 24.639912, -41.09197)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s17" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1225886595]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 24.660622, -41.166637)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s18" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1846312893]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 24.934072, -41.481415)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="s19" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1055685138]
+transform = Transform3D(1, 0, 0, 0, 0.25916842, 0, 0, 0, 1.0933698, 9.199196, 25.653372, -41.656387)
+shape = SubResource("BoxShape3D_u0ya7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=303778776]
+environment = SubResource("Environment_u0ya7")
+
+[node name="moons" type="StaticBody3D" parent="." unique_id=832101428]
+
+[node name="Moonwalk_Colony_moon123" parent="moons" unique_id=2082661784 instance=ExtResource("4_i5arm")]
+transform = Transform3D(0.9234342, 0, 0, 0, 0.9234342, 0, 0, 0, 0.9234342, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="moons" unique_id=1737037881]
+transform = Transform3D(-1, 0, 0, 0, 0.9991654, 0.04084988, 0, 0.040849924, -0.99916536, 0, 155, -491.89844)
+
+[node name="sum" type="StaticBody3D" parent="." unique_id=2139008857]
+
+[node name="Sun_1_1391000 (1)" parent="sum" unique_id=2139555934 instance=ExtResource("4_jka67")]
+transform = Transform3D(0.46337354, 0, 0, 0, 0.5144777, 0, 0, 0, 1, 0, 0, 5679.6416)
+
+[node name="circle" type="StaticBody3D" parent="." unique_id=1070350204]

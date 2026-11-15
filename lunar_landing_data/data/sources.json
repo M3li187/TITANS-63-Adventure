@@ -1,0 +1,53 @@
+{
+  "accessed_date": "2026-11-15",
+  "sources": [
+    {
+      "id": "nasa_apollo14_summary",
+      "title": "NASA Apollo 14 mission summary",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_14a_Summary.htm",
+      "use": "Mission identity, landing date and reported coordinates"
+    },
+    {
+      "id": "nasa_flight_reprogramming",
+      "title": "NASA Apollo Expeditions to the Moon, Chapter 7.4",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/SP-350/ch-7-4.html",
+      "use": "Abort-switch malfunction, ground software workaround and radar recovery"
+    },
+    {
+      "id": "lroc_apollo14_dtm",
+      "title": "LROC Apollo 14 Landing Site DTM",
+      "url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_APOLLO14",
+      "use": "Local measured terrain and related imagery; read labels and README"
+    },
+    {
+      "id": "lroc_dtm_download",
+      "title": "LROC Apollo 14 DTM GeoTIFF download page",
+      "url": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_DTM_APOLLO14",
+      "use": "Choose Digital Terrain Model (32-bit GeoTIFF), about 118.54 MB"
+    },
+    {
+      "id": "lroc_ortho_download",
+      "title": "LROC Apollo 14 orthophoto M150633128 at 2 m/pixel",
+      "url": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_DTM_APOLLO14_M150633128_2M",
+      "use": "Choose orthophoto TIFF, about 29.65 MB"
+    },
+    {
+      "id": "lroc_slope_download",
+      "title": "LROC Apollo 14 color slope map",
+      "url": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_DTM_APOLLO14_SLOPE",
+      "use": "Slope visualization and matching legend; colors are not numeric elevation"
+    },
+    {
+      "id": "moon_trek",
+      "title": "NASA Moon Trek",
+      "url": "https://trek.nasa.gov/moon/",
+      "use": "Explore lunar terrain and identify/download data products"
+    },
+    {
+      "id": "nasa_cgi_moon",
+      "title": "NASA SVS CGI Moon Kit",
+      "url": "https://svs.gsfc.nasa.gov/4720/",
+      "use": "Whole-Moon approach visuals; too coarse for individual landing rocks"
+    }
+  ]
+}

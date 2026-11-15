@@ -1,0 +1,38 @@
+{
+  "dataset": "NAC_DTM_APOLLO14",
+  "product_version": "v1.9",
+  "source_url": "https://data.lroc.im-ldi.com/lroc/view_rdr/NAC_DTM_APOLLO14",
+  "download_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/DATA/SDP/NAC_DTM/APOLLO14/NAC_DTM_APOLLO14.TIF",
+  "source_sha256": "e16502e2fae009e694c1e650f87856bf7c02924b917b98a0b22c533e12e07b3f",
+  "retrieved_date": "2026-11-15",
+  "crop_pixel_box": [
+    607,
+    10084,
+    1120,
+    10597
+  ],
+  "grid_size": 513,
+  "sample_spacing_m": 2.0000000000006,
+  "width_between_samples_m": 1024.0000000003072,
+  "center_reported_lat_deg": -3.6453,
+  "center_lon_east_deg": 342.52864,
+  "reference_elevation_m": -1062.8751220703125,
+  "source_elevation_min_m": -1083.2891845703125,
+  "source_elevation_max_m": -1045.6851806640625,
+  "slope_min_deg": 0.012608816847205162,
+  "slope_max_deg": 37.469459533691406,
+  "slope_median_deg": 3.7486770153045654,
+  "height_encoding": "Little-endian float32, row-major, north at first row. Relative to reference_elevation_m.",
+  "axis_mapping": "X east, Y relative elevation, Z south; centered at crop middle sample.",
+  "clear_zone_local_xz_m": [
+    42.0000000000126,
+    -16.0000000000048
+  ],
+  "clear_zone_mean_slope_deg": 1.1716350317001343,
+  "visual_extensions": "Background outside the measured crop and individual rocks are authored procedural scenery. User texture is blended only as decorative surface detail.",
+  "safety_note": "Clear-zone selection is a gameplay illustration, not a validated spacecraft landing assessment. Historic landing coordinates may differ from modern cartographic solutions.",
+  "orthophoto_product": "NAC_DTM_APOLLO14_M150633128_2M",
+  "orthophoto_source_sha256": "beb11e947f7922031e587b3af4daebb48fa8646b7cbdd7c09ea5fe4865530523",
+  "orthophoto_download_url": "https://pds.mcp.nasa.gov/data/store/img/lunar_reconnaissance_orbiter/pds4/lroc/lro-l-lroc-5-rdr/LROLRC_2001/EXTRAS/BROWSE/NAC_DTM/APOLLO14/NAC_DTM_APOLLO14_M150633128_2M.TIF",
+  "supplied_texture_source": "User attachment moon(1).glb, embedded moon_01_diff_4k JPEG; used as decorative detail only."
+}

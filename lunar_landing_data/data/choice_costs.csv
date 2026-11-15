@@ -1,0 +1,10 @@
+scenario,choice,fuel_cost_percentage_points,power_cost_percentage_points,time_cost_minutes,effect,provenance
+landing_warning,A,0,5,3,continue,user_authored_simulation
+landing_warning,B,0,5,7,continue,user_authored_simulation
+landing_warning,C,,,,safe_abort,user_authored_simulation
+radar_problem,A,10,5,5,radar_restored,user_authored_simulation
+radar_problem,B,5,15,2,backup_height,user_authored_simulation
+radar_problem,C,5,0,1,height_uncertain,user_authored_simulation
+final_landing,A,10,10,2,lights_on,user_authored_simulation
+final_landing,B,5,0,1,near_rocks,user_authored_simulation
+final_landing,C,25,5,4,clear_area,user_authored_simulation

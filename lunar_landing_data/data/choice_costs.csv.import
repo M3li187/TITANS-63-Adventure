@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://vi71ogu134mw"
+
+[deps]
+
+files=["res://lunar_landing_data/data/choice_costs.choice.translation", "res://lunar_landing_data/data/choice_costs.fuel.translation", "res://lunar_landing_data/data/choice_costs.power.translation", "res://lunar_landing_data/data/choice_costs.time.translation", "res://lunar_landing_data/data/choice_costs.effect.translation", "res://lunar_landing_data/data/choice_costs.provenance.translation"]
+
+source_file="res://lunar_landing_data/data/choice_costs.csv"
+dest_files=["res://lunar_landing_data/data/choice_costs.choice.translation", "res://lunar_landing_data/data/choice_costs.fuel.translation", "res://lunar_landing_data/data/choice_costs.power.translation", "res://lunar_landing_data/data/choice_costs.time.translation", "res://lunar_landing_data/data/choice_costs.effect.translation", "res://lunar_landing_data/data/choice_costs.provenance.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

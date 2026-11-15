@@ -1,0 +1,15 @@
+Three-part project integration — final source package
+
+Part 1.zip: source scripts/scenes and model/image assets.
+The Moon-base scene node_3d.tscn and all its referenced resources were integrated
+under moon_base/. The current landing mission, voice, sounds, astronaut and
+run/jump controller are retained from the latest main game.
+
+Part2.zip: 194 files, all under Godot's generated cache/editor directory.
+Part3.zip: 66 files, all under Godot's generated import-cache directory.
+Both archives passed CRC checks. They contain no additional source scenes,
+scripts or original model/image files required by the playable Moon-base scene.
+Generated caches are rebuilt by Godot and are not distributed in this ZIP.
+
+All parts are now accounted for. There are no pending-upload requirements.
+The root README contains the current controls and mission-flow behavior.

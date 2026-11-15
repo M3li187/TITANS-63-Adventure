@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "data_kind": "user_authored_simulation_not_NASA_measurements",
+  "initial_resources": {
+    "fuel_percent": 100,
+    "power_percent": 100,
+    "time_remaining_minutes": 20
+  },
+  "cost_convention": "Percentage-point subtraction from full starting capacity, not a percentage of the current remainder.",
+  "scenarios": [
+    {
+      "id": "landing_warning",
+      "title": "Landing system malfunction",
+      "prompt": "You are approaching the Moon to land at Fra Mauro. A landing-system warning is flashing.",
+      "reference_ids": [
+        "nasa_flight_reprogramming"
+      ],
+      "choices": [
+        {
+          "id": "A",
+          "label": "Ask Mission Control to check the problem.",
+          "cost": {
+            "fuel_percentage_points": 0,
+            "power_percentage_points": 5,
+            "time_minutes": 3
+          },
+          "outcome": "Mission Control resolves the warning.",
+          "effect": "continue",
+          "voice_id": "s1_a"
+        },
+        {
+          "id": "B",
+          "label": "Wait and check the system again.",
+          "cost": {
+            "fuel_percentage_points": 0,
+            "power_percentage_points": 5,
+            "time_minutes": 7
+          },
+          "outcome": "The warning remains; Mission Control resolves it after a longer delay.",
+          "effect": "continue",
+          "voice_id": "s1_b"
+        },
+        {
+          "id": "C",
+          "label": "Stop the landing to keep everyone safe.",
+          "cost": null,
+          "outcome": "The landing is aborted and the crew is safe.",
+          "effect": "safe_abort",
+          "voice_id": "s1_c"
+        }
+      ],
+      "voice_id": "s1"
+    },
+    {
+      "id": "radar_problem",
+      "title": "Landing radar problem",
+      "prompt": "Descent has started, but the landing radar is not providing a reliable height.",
+      "reference_ids": [
+        "nasa_flight_reprogramming"
+      ],
+      "choices": [
+        {
+          "id": "A",
+          "label": "Check the radar settings and try again.",
+          "cost": {
+            "fuel_percentage_points": 10,
+            "power_percentage_points": 5,
+            "time_minutes": 5
+          },
+          "outcome": "The radar works again after troubleshooting.",
+          "effect": "radar_restored",
+          "voice_id": "s2_a"
+        },
+        {
+          "id": "B",
+          "label": "Use the backup height sensor.",
+          "cost": {
+            "fuel_percentage_points": 5,
+            "power_percentage_points": 15,
+            "time_minutes": 2
+          },
+          "outcome": "The backup sensor shows your height, but it uses extra power.",
+          "effect": "backup_height",
+          "voice_id": "s2_b"
+        },
+        {
+          "id": "C",
+          "label": "Look through the window for a safe place.",
+          "cost": {
+            "fuel_percentage_points": 5,
+            "power_percentage_points": 0,
+            "time_minutes": 1
+          },
+          "outcome": "The surface is visible, but accurate height is unavailable.",
+          "effect": "height_uncertain",
+          "voice_id": "s2_c"
+        }
+      ],
+      "voice_id": "s2"
+    },
+    {
+      "id": "final_landing",
+      "title": "Final landing",
+      "prompt": "Large rocks occupy the landing area, and fuel is running low.",
+      "reference_ids": [
+        "lroc_apollo14_dtm"
+      ],
+      "choices": [
+        {
+          "id": "A",
+          "label": "Use landing lights to see the rocks better.",
+          "cost": {
+            "fuel_percentage_points": 10,
+            "power_percentage_points": 10,
+            "time_minutes": 2
+          },
+          "outcome": "The lights improve visibility and use power; a landing-site decision is still needed.",
+          "effect": "lights_on",
+          "voice_id": "s3_a"
+        },
+        {
+          "id": "B",
+          "label": "Land between the rocks to save fuel.",
+          "cost": {
+            "fuel_percentage_points": 5,
+            "power_percentage_points": 0,
+            "time_minutes": 1
+          },
+          "outcome": "The landing is dangerously close to rocks.",
+          "effect": "near_rocks",
+          "voice_id": "s3_b"
+        },
+        {
+          "id": "C",
+          "label": "Fly to a clear area farther away.",
+          "cost": {
+            "fuel_percentage_points": 25,
+            "power_percentage_points": 5,
+            "time_minutes": 4
+          },
+          "outcome": "A clear landing area is reached using more fuel.",
+          "effect": "clear_area",
+          "voice_id": "s3_c"
+        }
+      ],
+      "voice_id": "s3"
+    }
+  ],
+  "ending_thresholds": {
+    "secret": {
+      "fuel_at_least_percent": 70,
+      "power_at_least_percent": 75,
+      "time_remaining_at_least_minutes": 7,
+      "requires_safe_landing": true,
+      "requires_safe_decisions": true
+    },
+    "normal": "Safe landing without every secret-ending condition.",
+    "bad": "Resource exhaustion or an unsafe attempt, as defined by game logic.",
+    "safe": "Scenario 1 choice C: abort the landing."
+  },
+  "policy_decisions_required": [
+    "Define which actions set safe_landing, safe_decisions and unsafe_attempt.",
+    "Scenario 1 B also continues after Mission Control fixes the problem.",
+    "Scenario 3 A improves visibility but does not itself select a landing site; let the player make a subsequent landing decision without repeatedly charging for already-enabled lights."
+  ],
+  "game_rules": {
+    "safe_decisions_requires_prompt_mission_control": true,
+    "radar_choices_with_reliable_height": [
+      "A",
+      "B"
+    ],
+    "unsafe_final_landing_choice": "B",
+    "landing_lights_choice_is_not_touchdown": true,
+    "landing_lights_can_only_be_charged_once": true,
+    "resource_model": "choice_costs_plus_realtime_countdown",
+    "final_lights_followup_costs": "Choosing B or C after enabling lights charges that subsequent choice as well.",
+    "choices_require_physical_actions": true
+  }
+}

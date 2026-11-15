@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Cockpit.gd" id="1_cockpit"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="3_hud"]
+[ext_resource type="Script" path="res://scripts/MissionDemo.gd" id="4_mission"]
+
+[ext_resource type="Script" path="res://scripts/LunarWorld.gd" id="5_moon"]
+[ext_resource type="Script" path="res://scripts/FlightAudio.gd" id="6_audio"]
+[ext_resource type="Script" path="res://scripts/LandingMission.gd" id="7_mission"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Cockpit" type="Node3D" parent="."]
+script = ExtResource("1_cockpit")
+
+[node name="LunarWorld" type="Node3D" parent="."]
+script = ExtResource("5_moon")
+
+[node name="Astronaut" parent="." instance=ExtResource("2_player")]
+position = Vector3(0, 0.05, 2.6)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_hud")
+visible = false
+
+[node name="MissionDemo" type="Node" parent="."]
+script = ExtResource("4_mission")
+
+enabled = false
+
+[node name="FlightAudio" type="Node" parent="."]
+script = ExtResource("6_audio")
+
+[node name="LandingMission" type="Node" parent="."]
+script = ExtResource("7_mission")

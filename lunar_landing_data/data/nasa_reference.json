@@ -1,0 +1,33 @@
+{
+  "data_kind": "curated_historical_reference_not_live_telemetry",
+  "mission": "Apollo 14",
+  "lunar_module": "Antares",
+  "landing_date_utc": "1971-02-05",
+  "site": {
+    "name": "Fra Mauro highlands",
+    "latitude_degrees_north": -3.6453,
+    "longitude_degrees_east_signed": -17.47136,
+    "longitude_degrees_east_0_to_360": 342.52864,
+    "coordinate_note": "Reported historical coordinates from the NASA mission summary; do not assume metre-accurate agreement with modern maps.",
+    "source_id": "nasa_apollo14_summary"
+  },
+  "events": [
+    {
+      "id": "abort_switch",
+      "fact": "A faulty abort-switch signal threatened to terminate descent. Ground specialists supplied a software workaround for the crew.",
+      "source_id": "nasa_flight_reprogramming",
+      "game_use": "Historical basis for Scenario 1 warning and Mission Control dialogue"
+    },
+    {
+      "id": "landing_radar",
+      "fact": "Invalid landing-radar altitude and velocity information was recovered after the crew cycled the radar circuit breaker.",
+      "source_id": "nasa_flight_reprogramming",
+      "game_use": "Historical basis for Scenario 2 radar warning and recovery"
+    }
+  ],
+  "not_historical_measurements": [
+    "The choice costs and resource percentages are gameplay values.",
+    "The backup height sensor is a fictional game capability unless separately documented.",
+    "Scenario 3 rock positions and branching outcomes are authored simulation content."
+  ]
+}
